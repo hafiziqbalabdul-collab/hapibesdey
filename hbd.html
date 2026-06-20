@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selamat Ulang Tahun, Sayangkuu 🌷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FBF4EA;
+    --peach: #F8C9A8;
+    --pink: #F2A6B4;
+    --sage: #9CAE8C;
+    --berry: #C4546A;
+    --ink: #5A4A42;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* ---------- floating petals ---------- */
+  .petal-field {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .petal {
+    position: absolute;
+    top: -40px;
+    font-size: 22px;
+    opacity: 0.75;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    0%   { transform: translateY(0) translateX(0) rotate(0deg); }
+    100% { transform: translateY(110vh) translateX(40px) rotate(360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .petal { animation: none; display: none; }
+    * { animation-duration: 0.001ms !important; }
+  }
+
+  /* ---------- sections ---------- */
+  section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  h1, h2, .display {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    color: var(--berry);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero h1 {
+    font-size: clamp(2.4rem, 7vw, 4.6rem);
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .hero .age-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--pink);
+    color: white;
+    font-family: 'Fraunces', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin: 18px auto;
+    box-shadow: 0 8px 24px rgba(196, 84, 106, 0.3);
+    transform: rotate(-6deg);
+  }
+
+  .hero p.sub {
+    font-size: 1.15rem;
+    max-width: 480px;
+    margin: 8px auto 28px;
+    color: var(--ink);
+    opacity: 0.85;
+  }
+
+  .scroll-hint {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: var(--sage);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    animation: bob 2s ease-in-out infinite;
+  }
+
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  /* ---------- letter cards ---------- */
+  .letter-wrap {
+    max-width: 680px;
+    width: 100%;
+  }
+
+  .eyebrow {
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 28px;
+    padding: 38px 32px;
+    box-shadow: 0 14px 40px rgba(196, 84, 106, 0.12);
+    margin: 18px 0;
+    text-align: left;
+    position: relative;
+    border: 1px solid rgba(196,84,106,0.08);
+  }
+
+  .card::before {
+    content: "🌸";
+    position: absolute;
+    top: -18px;
+    left: 28px;
+    font-size: 1.6rem;
+    background: var(--cream);
+    border-radius: 50%;
+    padding: 4px 8px;
+  }
+
+  .card p {
+    font-size: 1.08rem;
+    line-height: 1.85;
+    color: var(--ink);
+  }
+
+  .card p + p { margin-top: 14px; }
+
+  .card .highlight {
+    color: var(--berry);
+    font-weight: 700;
+  }
+
+  /* ---------- wish list ---------- */
+  .wish-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 600px;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 560px) {
+    .wish-grid { grid-template-columns: 1fr; }
+  }
+
+  .wish {
+    background: white;
+    border-radius: 20px;
+    padding: 24px 18px;
+    box-shadow: 0 10px 28px rgba(154, 174, 140, 0.18);
+    transition: transform 0.3s ease;
+  }
+
+  .wish:hover { transform: translateY(-6px) rotate(-1deg); }
+
+  .wish .emoji { font-size: 2rem; display: block; margin-bottom: 10px; }
+  .wish .label { font-weight: 700; color: var(--berry); font-size: 1.02rem; }
+  .wish .desc { font-size: 0.92rem; opacity: 0.8; margin-top: 4px; line-height: 1.5; }
+
+  /* ---------- promise section ---------- */
+  .promise-section {
+    background: linear-gradient(180deg, var(--cream) 0%, #FCE9DE 100%);
+  }
+
+  .promise-card {
+    background: var(--berry);
+    color: white;
+    border-radius: 28px;
+    padding: 44px 36px;
+    max-width: 600px;
+    box-shadow: 0 18px 48px rgba(196,84,106,0.28);
+  }
+
+  .promise-card .display {
+    color: white;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    margin-bottom: 16px;
+  }
+
+  .promise-card p {
+    font-size: 1.08rem;
+    line-height: 1.85;
+  }
+
+  .promise-card p + p { margin-top: 14px; }
+
+  /* ---------- joke / funny note ---------- */
+  .funny-note {
+    display: inline-block;
+    background: var(--peach);
+    border-radius: 18px;
+    padding: 16px 22px;
+    font-size: 1rem;
+    margin-top: 24px;
+    transform: rotate(-1.5deg);
+    box-shadow: 0 8px 20px rgba(248,201,168,0.5);
+    max-width: 480px;
+  }
+
+  /* ---------- closing ---------- */
+  .closing h2 {
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    margin-bottom: 14px;
+  }
+
+  .closing .signature {
+    margin-top: 36px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--sage);
+  }
+
+  .heart-burst {
+    margin-top: 30px;
+    font-size: 1.8rem;
+    letter-spacing: 10px;
+  }
+
+  .pop-btn {
+    margin-top: 36px;
+    background: var(--berry);
+    color: white;
+    border: none;
+    padding: 16px 34px;
+    border-radius: 999px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+    box-shadow: 0 10px 26px rgba(196,84,106,0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .pop-btn:hover { transform: translateY(-3px) scale(1.03); }
+  .pop-btn:focus-visible { outline: 3px solid var(--sage); outline-offset: 3px; }
+
+  #confetti-layer {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 50;
+  }
+
+  .confetto {
+    position: absolute;
+    top: -20px;
+    font-size: 20px;
+    animation: confetti-fall 2.6s ease-in forwards;
+  }
+
+  @keyframes confetti-fall {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(540deg); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="petal-field" id="petalField"></div>
+<div id="confetti-layer"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow">21 Juni 2026</div>
+  <h1>Happy Level Up,<br>Radista Felisha Ardani 💛</h1>
+  <div class="age-badge">15</div>
+  <p class="sub">Hari ini hari spesialnya my princess. Aku siapin sesuatu buat kamu, scroll pelan-pelan ya, jangan buru-buru kayak kamu ngabisin jajan favoritmu.</p>
+  <div class="scroll-hint">
+    <span>gulir ke bawah</span>
+    <span>↓</span>
+  </div>
+</section>
+
+<!-- LETTER 1: SYUKUR -->
+<section class="letter-section">
+  <div class="letter-wrap">
+    <div class="eyebrow">Buat Kesayanganku</div>
+    <div class="card">
+      <p>Hai, Sayang. Tau nggak, dari semua hal baik yang pernah terjadi di hidupku, kamu salah satu yang paling bikin aku <span class="highlight">bersyukur tiap hari</span>.</p>
+      <p>Nggak harus ada alasan besar. Cukup tau kamu ada, baik-baik aja, dan jadi bagian dari hari-hariku — itu udah cukup buat bikin aku senyum sendiri kayak orang aneh di tengah keramaian.</p>
+      <p>Makasih ya, udah jadi princess yang sekarang ini. Yang lucu, yang kadang ngambek nggak jelas, yang bikin hari biasa jadi nggak biasa-biasa aja.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WISH GRID -->
+<section class="wish-section">
+  <div class="letter-wrap">
+    <div class="eyebrow">Doa Kecil Buat Kamu</div>
+    <h2 style="font-size: clamp(1.6rem, 5vw, 2.4rem); margin-bottom: 6px;">Di Umur 15 Ini, Aku Doain...</h2>
+    <div class="wish-grid">
+      <div class="wish">
+        <span class="emoji">🌿</span>
+        <div class="label">Selalu Sehat</div>
+        <div class="desc">Nggak gampang capek, nggak gampang sakit, biar bisa main dan ketawa terus.</div>
+      </div>
+      <div class="wish">
+        <span class="emoji">🌻</span>
+        <div class="label">Selalu Bahagia</div>
+        <div class="desc">Hari-harimu lebih banyak senyumnya daripada keluh kesahnya.</div>
+      </div>
+      <div class="wish">
+        <span class="emoji">⭐</span>
+        <div class="label">Semua Impian Tercapai</div>
+        <div class="desc">Apapun yang kamu cita-citakan, semoga jalannya dimudahkan.</div>
+      </div>
+      <div class="wish">
+        <span class="emoji">🦋</span>
+        <div class="label">Tumbuh Jadi Diri Sendiri</div>
+        <div class="desc">Jadi Radista versi terbaik, dengan caramu sendiri, secepat atau selambat yang kamu mau.</div>
+      </div>
+    </div>
+    <div class="funny-note">
+      Catatan tambahan dari aku: semoga aku akan selalu menjadi manusia favoritmu yah,dan kamu juga akan selalu menjadi favoritku disetiap favoritku yang lainnya
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section class="promise-section">
+  <div class="promise-card">
+    <div class="display">Satu Hal yang Pasti</div>
+    <p>Aku nggak bisa kasih kamu segalanya, tapi ada yang bisa aku pastikan: aku akan selalu <span style="font-weight:700;">mendukung</span> apapun yang kamu kerjain, dan akan selalu <span style="font-weight:700;">menjaga</span> kamu sebisa aku.</p>
+    <p>Kalau kamu lagi capek, aku di sini. Kalau kamu lagi excited cerita hal random jam 11 malam, aku juga di sini, walau kadang sambil ngantuk berat. 😄</p>
+    <p>Yang penting, kamu nggak sendirian. Selamanya kayak gitu.</p>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <h2>Selamat Ulang Tahun,<br>Sayangkuu! 🎂</h2>
+  <p style="max-width: 460px; font-size: 1.05rem; opacity: 0.85;">
+    Semoga umur 15 ini jadi salah satu tahun terbaik yang pernah kamu punya. Tetap jadi cewe yang ceria, yang baik, dan yang bikin orang di sekitarnya ikut bahagia.
+  </p>
+  <div class="heart-burst">🌷 💛 🌷</div>
+  <button class="pop-btn" id="confettiBtn">Rayakan dengan Confetti 🎉</button>
+  <div class="signature">— dari aku, yang selalu bersyukur ada kamu</div>
+</section>
+
+<script>
+  // floating petals
+  const petals = ["🌸","🌼","🌷","💛","🌿"];
+  const field = document.getElementById('petalField');
+  for (let i = 0; i < 18; i++) {
+    const el = document.createElement('span');
+    el.className = 'petal';
+    el.textContent = petals[Math.floor(Math.random() * petals.length)];
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.animationDuration = (10 + Math.random() * 10) + 's';
+    el.style.animationDelay = (Math.random() * 10) + 's';
+    el.style.fontSize = (16 + Math.random() * 14) + 'px';
+    field.appendChild(el);
+  }
+
+  // confetti burst on button
+  const confettiLayer = document.getElementById('confetti-layer');
+  const confettiEmojis = ["🎉","🎈","💛","🌸","✨","🌷"];
+  document.getElementById('confettiBtn').addEventListener('click', () => {
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('span');
+      c.className = 'confetto';
+      c.textContent = confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)];
+      c.style.left = Math.random() * 100 + 'vw';
+      c.style.fontSize = (14 + Math.random() * 16) + 'px';
+      c.style.animationDelay = (Math.random() * 0.6) + 's';
+      confettiLayer.appendChild(c);
+      setTimeout(() => c.remove(), 3200);
+    }
+  });
+</script>
+
+</body>
+</html>
